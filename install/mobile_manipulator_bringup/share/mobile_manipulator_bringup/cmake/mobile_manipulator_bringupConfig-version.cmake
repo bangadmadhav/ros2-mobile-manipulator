@@ -1,1 +1,0 @@
-/home/bangadmadhav/real_shit/ros2-mobile-manipulator/build/mobile_manipulator_bringup/ament_cmake_core/mobile_manipulator_bringupConfig-version.cmake
