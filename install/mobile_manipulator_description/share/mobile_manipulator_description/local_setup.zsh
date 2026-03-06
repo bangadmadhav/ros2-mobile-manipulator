@@ -1,0 +1,1 @@
+/home/bangadmadhav/real_shit/ros2-mobile-manipulator/build/mobile_manipulator_description/ament_cmake_environment_hooks/local_setup.zsh

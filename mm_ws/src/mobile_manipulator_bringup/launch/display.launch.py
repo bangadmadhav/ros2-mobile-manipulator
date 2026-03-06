@@ -33,11 +33,11 @@ def generate_launch_description():
     )
 
     #joint_state_publisher_gui node used for a UI with sliders to move the joints around (ONLY FOR TESTING)
-    joint_state_publisher_gui_node = Node(
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        name='joint_state_publisher_gui'
-    )
+    # joint_state_publisher_gui_node = Node(
+    #     package='joint_state_publisher_gui',
+    #     executable='joint_state_publisher_gui',
+    #     name='joint_state_publisher_gui'
+    # )
 
     #rviz2 node to visualize the robot in rviz (ONLY FOR TESTING)
     rviz_node = Node(
@@ -48,9 +48,37 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file]
     )
 
+    gazebo_node = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory("ros_gz_sim"),
+                "launch",
+                "gz_sim.launch.py"
+            )
+        ),
+        launch_arguments={"gz_args": "empty.sdf -r"}.items()
+    )
+
+    spawn_robot_node = Node(
+        package="ros_gz_sim",
+        executable="create",
+        arguments=["-topic", "robot_description"]
+    )
+
+    bridge_node = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        parameters=[{
+            "config_file": os.path.join(bringup_pkg_share, "config", "gazebo_bridge.yaml")
+        }],
+        output="screen"
+    )
+
     # 4. Return the LaunchDescription
     return LaunchDescription([
-        joint_state_publisher_gui_node,
         robot_state_publisher_node,
-        rviz_node
+        rviz_node,
+        gazebo_node,
+        spawn_robot_node,
+        bridge_node
     ])

@@ -100,4 +100,7 @@
         <child link="caster_wheel_link"/>
         <origin xyz="${chassis_length/4} 0 ${-caster_radius}" rpy="0 0 0"/>
     </joint>
+
+    <!-- GAZEBO SETUP: Plugin Configuration -->
+    <xacro:include filename="$(find mobile_manipulator_description)/urdf/gazebo_setup.xacro" />
 </robot>
