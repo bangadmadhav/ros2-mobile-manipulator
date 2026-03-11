@@ -20,7 +20,10 @@
                 <box size="${chassis_length} ${chassis_width} ${chassis_height}" />
             </geometry>
         </collision>
-        <xacro:box_inertia m="${chassis_mass}" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}" />
+        <xacro:box_inertia m="${chassis_mass}" 
+                            x="${chassis_length}" 
+                            y="${chassis_width}" 
+                            z="${chassis_height}" />
     </link>
 
     <link name="left_wheel_link">
@@ -63,7 +66,7 @@
             <geometry>
                 <sphere radius="${caster_radius}" />
             </geometry>
-            <material name="grey_caster" />
+            <material name="grey" />
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
@@ -100,6 +103,9 @@
         <child link="caster_wheel_link"/>
         <origin xyz="${chassis_length/4} 0 ${-caster_radius}" rpy="0 0 0"/>
     </joint>
+
+    <!-- Robotic Arm -->
+    <xacro:include filename="$(find mobile_manipulator_description)/urdf/robotic_arm.xacro" />
 
     <!-- GAZEBO SETUP: Plugin Configuration -->
     <xacro:include filename="$(find mobile_manipulator_description)/urdf/gazebo_setup.xacro" />
