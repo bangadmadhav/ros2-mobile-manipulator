@@ -21,29 +21,17 @@ The long term goal is to integrate autonomous navigation, motor control and mobi
 
 ---
 
-## Current Progress
-
-- [x] Mobile base URDF with differential drive
-- [x] 2-DOF robotic arm URDF
-- [x] Gazebo simulation setup with plugins
-- [x] ROS2 Gazebo Bridge configuration
-- [x] Bringup launch file
-- [x] Base velocity control via `/cmd_vel`
-- [x] Arm joint control via topic publishing
-
----
-
 ## Demo
 
 **Mobile Base Movement**
 > Differential drive base moving in a circle by publishing to `/cmd_vel`
 
-https://github.com/bangadmadhav/ros2-mobile-manipulator/media/bot_moving_version1.webm
+![bot_moving_version1](/media/bot_moving_version1.mp4)
 
 **Arm Control**
 > 2-DOF arm joints being controlled via topic publishing
-https://github.com/bangadmadhav/ros2-mobile-manipulator/media/mobile_manipulator_manipulating_robotic_arm.png
 
+![mobile manipulator manipulating robotic arm](/media/mobile_manipulator_manipulating_robotic_arm.png)
 ---
 
 ## Planned Features
@@ -63,4 +51,4 @@ https://github.com/bangadmadhav/ros2-mobile-manipulator/media/mobile_manipulator
 - URDF / Xacro
 - Nav2 *(planned)*
 - MoveIt *(planned)*
-```
+
