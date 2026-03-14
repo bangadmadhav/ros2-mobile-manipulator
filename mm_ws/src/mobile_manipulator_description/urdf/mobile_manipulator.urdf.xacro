@@ -108,5 +108,7 @@
     <xacro:include filename="$(find mobile_manipulator_description)/urdf/robotic_arm.xacro" />
 
     <!-- GAZEBO SETUP: Plugin Configuration -->
-    <xacro:include filename="$(find mobile_manipulator_description)/urdf/gazebo_setup.xacro" />
+    <xacro:include filename="$(find mobile_manipulator_description)/urdf/gazebo_setup.xacro" />    
+    <!-- ROS2 Control SETUP: -->
+    <xacro:include filename="$(find mobile_manipulator_description)/urdf/ros2_control.xacro" />
 </robot>

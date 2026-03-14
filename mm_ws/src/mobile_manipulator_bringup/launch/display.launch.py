@@ -29,7 +29,10 @@ def generate_launch_description():
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
-        parameters=[{"robot_description": robot_model_description}]
+        parameters=[
+            {"robot_description": robot_model_description},
+            {"use_sim_time": True}
+        ]
     )
 
     #joint_state_publisher_gui node used for a UI with sliders to move the joints around (ONLY FOR TESTING)
@@ -64,6 +67,18 @@ def generate_launch_description():
         executable="create",
         arguments=["-topic", "robot_description"]
     )
+    
+    joint_state_broadcaster_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_state_broadcaster"],
+    )
+
+    diff_drive_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["diff_drive_controller"],
+    )
 
     bridge_node = Node(
         package="ros_gz_bridge",
@@ -80,5 +95,7 @@ def generate_launch_description():
         rviz_node,
         gazebo_node,
         spawn_robot_node,
-        bridge_node
+        bridge_node,
+        joint_state_broadcaster_spawner,
+        diff_drive_controller_spawner
     ])
